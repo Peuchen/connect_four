@@ -13,7 +13,22 @@ class Grid
 
   def visualize_grid
     puts grid.map { |i| i.join }
-    #width = grid.flatten.max.to_s.size + 2
-    #puts grid.map { |pos| pos.map { |i| i.to_s.rjust(width) }.join }
   end
+
+  def update_grid(player, column)
+    row = -1
+
+    loop do
+      if grid[row].nil?
+        puts "This column is already fully occupied"
+        break
+      elsif grid[row][column] == "|_|"
+        grid[row][column] = "|#{player.disk}|"
+        break
+      else
+        row -= 1
+      end
+    end
+  end
+
 end
