@@ -28,17 +28,6 @@ describe Grid do
 
     end
 
-    context 'all rows for a specific position are occupied' do
-      before do
-        6.times { new_grid.update_grid(player, 3) }
-      end
-
-      it 'should show that the column is occupied' do
-        expect(STDOUT).to receive(:puts).with("This column is already fully occupied")
-        new_grid.update_grid(player, 3)
-      end
-
-    end
   end
 
   describe '#free?' do
@@ -52,7 +41,7 @@ describe Grid do
 
     it 'should return an error' do
       expect(STDOUT).to receive(:puts).with("This is not a valid column number.")
-      new_grid.free?(6)
+      new_grid.free?(8)
     end
 
   end

@@ -18,21 +18,16 @@ class Grid
   def free?(column)
     top_cell = grid[5][column-1]
 
-    if column > 0 && column < 6
-      top_cell.include?("_") ? true : false
+    if column >= 1 && column <= 7
+      top_cell == "|_|" ? true : false
     else
       puts "This is not a valid column number."
     end
   end
 
-  def update_grid(player, column)
-    row = -1
-
-    loop do
-      if grid[row].nil?
-        puts "This column is already fully occupied"
-        break
-      elsif grid[row][column] == "|_|"
+  def update_grid(player, column, row = 5)
+    while row >= 0
+      if grid[row][column] == "|_|"
         grid[row][column] = "|#{player.disk}|"
         break
       else
