@@ -15,6 +15,16 @@ class Grid
     puts grid.map { |i| i.join }
   end
 
+  def free?(column)
+    top_cell = grid[5][column-1]
+
+    if column > 0 && column < 6
+      top_cell.include?("_") ? true : false
+    else
+      puts "This is not a valid column number."
+    end
+  end
+
   def update_grid(player, column)
     row = -1
 

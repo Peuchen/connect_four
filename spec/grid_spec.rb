@@ -36,9 +36,24 @@ describe Grid do
       it 'should show that the column is occupied' do
         expect(STDOUT).to receive(:puts).with("This column is already fully occupied")
         new_grid.update_grid(player, 3)
-
       end
 
     end
+  end
+
+  describe '#free?' do
+    subject(:new_grid) { described_class.new }
+    let(:player) { double('player', disk: 'X')}
+
+    it 'should return true' do
+      output = new_grid.free?(4)
+      expect(output).to be(true)
+    end
+
+    it 'should return an error' do
+      expect(STDOUT).to receive(:puts).with("This is not a valid column number.")
+      new_grid.free?(6)
+    end
+
   end
 end
