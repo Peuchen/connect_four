@@ -40,4 +40,24 @@ class Grid
     end
   end
 
+  def win?(column = 0, row = 0)
+    while row <= 5
+      if grid[row][column] == "|X|" || grid[row][column] == "|O|"
+        if (grid[row][column] == grid[row][column+1]) && (grid[row][column] == grid[row][column+2]) && (grid[row][column] == grid[row][column+3])
+          puts "You've won"
+          return true
+        elsif (grid[row][column] == grid[row+1][column]) && (grid[row][column] == grid[row+2][column]) && (grid[row][column] == grid[row+3][column])
+          puts "You've won"
+          return true
+        elsif (grid[row][column] == grid[row+1][column+1]) && (grid[row][column] == grid[row+2][column+2]) && (grid[row][column] == grid[row+3][column+3])
+          puts "You've won"
+          return true
+        end
+      else
+        false
+      end
+      row += 1
+    end
+  end
+
 end

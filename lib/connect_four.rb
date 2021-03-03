@@ -17,7 +17,7 @@ class Game
   end
 
   def play
-    until nil?
+    until grid.win?
       grid.visualize_grid
       column = ask_for_input(player1)
       grid.update_grid(player1, column - 1)

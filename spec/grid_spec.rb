@@ -45,4 +45,22 @@ describe Grid do
     end
 
   end
+
+  describe '#win?' do
+    subject(:new_grid) { described_class.new }
+
+    context "four X'es in a row" do
+      before do
+        new_grid[0][0] = "|X|"
+        new_grid[0][1] = "|X|"
+        new_grid[0][2] = "|X|"
+        new_grid[0][3] = "|X|"
+      end
+
+      it 'should return true' do
+        expect(new_grid.win?).to be(true)
+      end
+    end
+
+  end
 end
