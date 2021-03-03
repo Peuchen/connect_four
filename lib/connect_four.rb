@@ -18,16 +18,20 @@ class Game
 
   def play
     until nil?
+      grid.visualize_grid
       column = ask_for_input(player1)
-      grid.update_grid(player1, column)
+      grid.update_grid(player1, column - 1)
+      grid.visualize_grid
       column = ask_for_input(player2) #unless game_over?
-      grid.update_grid(player2, column)
+      grid.update_grid(player2, column - 1)
     end
   end
 
   def ask_for_input(player, input = 0)
-    puts "Where do you want to place the '#{player.disk}'?"
-    until input > 0
+    puts "Where do you want to place the '#{player.disk}'? Please enter a number."
+    input = $stdin.gets.chomp.to_i
+
+    until grid.free?(input)
       puts "Please enter a number."
       input = $stdin.gets.chomp.to_i
     end

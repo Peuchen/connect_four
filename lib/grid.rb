@@ -16,10 +16,14 @@ class Grid
   end
 
   def free?(column)
-    top_cell = grid[5][column-1]
+    top_cell = grid[0][column-1]
 
     if column >= 1 && column <= 7
-      top_cell == "|_|" ? true : false
+      if top_cell == "|_|"
+        true
+        else
+          puts "This column is occupied"
+        end
     else
       puts "This is not a valid column number."
     end
