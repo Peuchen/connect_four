@@ -12,8 +12,8 @@ class Game
 
   def initialize
     @grid = Grid.new
-    @player1 = Player.new('X')
-    @player2 = Player.new('O')
+    @player1 = Player.new('X', 'Player 1')
+    @player2 = Player.new('O', 'Player 2')
   end
 
   def play
@@ -28,7 +28,7 @@ class Game
   end
 
   def ask_for_input(player, input = 0)
-    puts "Where do you want to place the '#{player.disk}'? Please enter a number."
+    puts "#{player.name}, where do you want to place the '#{player.disk}'? Please enter a number."
     input = $stdin.gets.chomp.to_i
 
     until grid.free?(input)
